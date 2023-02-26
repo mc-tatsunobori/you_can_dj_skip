@@ -1,8 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 import * as process from "process";
-import {Simulate} from "react-dom/test-utils";
-import error = Simulate.error;
 
 type RequestBody = {
     context_uri: string,
@@ -32,7 +30,7 @@ export default async function startResumePlayback (data: RequestBody, res: NextA
 
         axios(config)
             .then(function (response: { data: ResponseBody; }) {
-                res.status(200).json(response.data);
+                res.status(204).json("success");
             })
             .catch(function (error: any) {
                 res.status(401).json(error)
