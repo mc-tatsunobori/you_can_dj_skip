@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as process from "process";
 import * as console from "console";
 import startResumePlayback from "@/pages/api/spotify/start_resume_playback";
+import skipToNext from "@/pages/api/spotify/skip_to_next";
 
 type Data = {
     data: string
@@ -32,23 +33,13 @@ export default function handler(
     startResumePlayback(data, res).then(r => {
         // TODO: rを使用していないので、記述処理を変更予定。
         console.log(r);
-        // TODO: 上記再生処理と分割。
         const skipMusic = function () {
-            const config = {
-                method: 'post',
-                url: 'https://api.spotify.com/v1/me/player/next',
-                headers: {
-                    'Authorization': 'Bearer ' + process.env.SPOTIFY_AUTH_TOKEN
-                }
-            };
+            // TODO: 非同期処理として裏側で処理し続けるようにする。
+            skipToNext(res).then(r => {
+                // TODO: rを使用していないので、記述処理を変更予定。
+                console.log(r);
+            });
 
-            axios(config)
-                .then(function (response: { data: any; }) {
-                    res.status(200).json(response.data);
-                })
-                .catch(function (error: any) {
-                    res.status(401).json(error)
-                });
         };
         const tm = 120000;
         setInterval(skipMusic,tm);
