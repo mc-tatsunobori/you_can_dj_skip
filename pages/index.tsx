@@ -35,7 +35,7 @@ export default function Index(loginPath: object) {
             <button onClick={login}>
                 Sign in with Spotify
             </button>
-            <form action="/api/form" method="post">
+            <form action="/api/start_dj_play" method="post">
                 <label htmlFor="play_list_id">PlayListID</label>
                 <input type="text" id="play_list_id" name="play_list_id"/>
                 <button type="submit">Start</button>
