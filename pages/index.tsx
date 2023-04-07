@@ -29,17 +29,25 @@ export default function Index(loginPath: object) {
                 <title>YouCanDjSkip</title>
                 <meta name="description" content="Spotifyで自分のプレイリストを1分おきにスキップしてくれるサイト"/>
             </Head>
-            <h1>YouCanDjSkip</h1>
+            <h1 className={"text-5xl m-5 flex justify-center"}>YouCanDJSkip</h1>
             <div>
             </div>
-            <button onClick={login}>
-                Sign in with Spotify
-            </button>
-            <form action="/api/start_dj_play" method="post">
-                <label htmlFor="play_list_id">PlayListID</label>
-                <input type="text" id="play_list_id" name="play_list_id"/>
-                <button type="submit">Start</button>
-            </form>
+            <div className={"flex justify-center flex-col max-w-2xl m-auto"}>
+                <div className={"m-auto"}>
+                    <button onClick={login} className={"rounded-md m-5 bg-emerald-500 hover:bg-emerald-600 p-2"}>
+                        <p className={"text-white"}>Sign in with Spotify</p>
+                    </button>
+                </div>
+                <div className={"m-auto flex justify-center flex-col"}>
+                    <form action="/api/start_dj_play" method="post" className={"m-5 flex justify-center flex-col"}>
+                        <label htmlFor="play_list_id">PlayListID</label>
+                        <input type="text" id="play_list_id" name="play_list_id" className={"form-input m-2 rounded-md"}/>
+                        <button type="submit" className={"rounded-md bg-emerald-500 hover:bg-emerald-600 p-2 m-2"}>
+                            <p className={"text-white"}>Start</p>
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
 
     )
