@@ -8,8 +8,6 @@ export const getServerSideProps = withIronSessionSsr(
     async function getServerSideProps({req}) {
         const session = req.session;
 
-        console.log(session);
-
         const scopes = ['user-read-playback-state', 'user-modify-playback-state', 'user-read-currently-playing'];
         const N = 16;
         const state =  crypto.randomBytes(N).toString('base64').substring(0, N);
